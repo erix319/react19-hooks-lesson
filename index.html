@@ -2,131 +2,2062 @@
 <html lang="ru">
 	<head>
 		<meta charset="utf-8" />
-<meta name="description" content="Интерактивный урок по новым хукам React 19: use(), useActionState, useOptimistic и useFormStatus — с живыми редактируемыми примерами прямо в браузере." />
-<link rel="canonical" href="https://erix319.github.io/react19-hooks-lesson/" />
-<meta property="og:title" content="React 19 · Новые хуки — интерактивный урок" />
-<meta property="og:description" content="use(), useActionState, useOptimistic и useFormStatus — живые примеры прямо в браузере." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://erix319.github.io/react19-hooks-lesson/" />
-<meta property="og:image" content="https://verno-dev.com/previews/react19-hooks-lesson.jpg" />
-<meta name="twitter:card" content="summary_large_image" />
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.92em' font-size='90'>⚛️</text></svg>" />
-
+		<meta name="description" content="Интерактивный урок по новым хукам React 19: use(), useActionState, useOptimistic и useFormStatus — с живыми редактируемыми примерами прямо в браузере." />
 		<meta
 			name="viewport"
 			content="width=device-width, initial-scale=1"
 		/>
+		<link
+			href='data:image/x-icon;base64,AAABAAEAEBAAAAEACABoBQAAFgAAACgAAAAQAAAAIAAAAAEACAAAAAAAAAEAAAAAAAAAAAAAAAEAAAAAAAAA2v4AAOj8AKWlpQAB4P8A6+vrAPr9/QA3LtwACvL1AAHZ/wAjn+sAWen/AP///wDd3d0Awr68AAOu/wAB3/8AAKH+AACn/wAA6f4AAeL/AP37/wAD6f4A+vr6AADY/wD7//0AAsL9AP/7/gDs7OwAc7fyAP7+/gAXFJ8A09PTAAXy/gDu7u4Ag/n/AADe/gAqLCoAd2X4AM7//gCjo6MAM+L/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHR0dCwsLCwsLCwsLCwsLCwsdHQsLCwsLCwsLCwsLCwsdHR0kCwInDAsLHQsLCwsLHQsLJhwUCwsLFgQbFgsLCx0LHQoIDgsLCwsLCwsLCx0dCwsLIiMJCwsLCwsLCwsLHQsLCwcPKAsLCwsLCwsLCx0LHQsLExcRCwsLCwsLCwsdCwsLCxggAxoLCwsLCwsLHR0LCx0dARcZCwsLCwsLCwsLCwsLCx0SABALCx0LCwsdHR0LCwsLBRUNHQsLCwsLCwsLCx0LCwsfIR4LCwsLHQsLHQsLCwsLCyUGCwsLCwsLCwsLCx0LCx0LCwsdCx0dCwsLCwsLHR0dHR0dHQsdCwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA='
+			rel='icon'
+			type='image/x-icon'
+		></link>;
 		<title>React 19 · Новые хуки — интерактивный урок</title>
-		<meta
-			name="description"
-			content="Интерактивная страница с уроком по React 19 hooks."
+		<link
+			rel="preconnect"
+			href="https://fonts.googleapis.com"
+		/>
+		<link
+			rel="preconnect"
+			href="https://fonts.gstatic.com"
+			crossorigin
+		/>
+		<link
+			href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;800&family=Onest:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap"
+			rel="stylesheet"
 		/>
 		<style>
 			:root {
-				color-scheme: dark;
 				--bg: #0a0d13;
-				--panel: #111827;
-				--text: #f3f4f6;
-				--muted: #9ca3af;
-				--accent: #22d3ee;
-				--accent2: #fbbf24;
+				--bg2: #10151e;
+				--bg3: #161c28;
+				--inset: #0d1219;
+				--line: rgba(255, 255, 255, 0.08);
+				--line2: rgba(255, 255, 255, 0.13);
+				--text: #e7ecf3;
+				--muted: #8a94a6;
+				--faint: #5b6472;
+				--cyan: #22d3ee;
+				--cyan2: #67e8f9;
+				--cyan-dim: #0e7490;
+				--amber: #fbbf24;
+				--amber2: #fcd34d;
+				--amber-dim: #92400e;
+				--red: #f87171;
+				--green: #4ade80;
+				--violet: #a78bfa;
+				--disp: 'Unbounded', system-ui, sans-serif;
+				--body: 'Onest', system-ui, sans-serif;
+				--mono: 'JetBrains Mono', ui-monospace, Menlo, monospace;
 			}
 			* {
 				box-sizing: border-box;
 			}
+			html {
+				scroll-behavior: smooth;
+			}
+			@media (prefers-reduced-motion: reduce) {
+				html {
+					scroll-behavior: auto;
+				}
+				* {
+					animation: none !important;
+					transition: none !important;
+				}
+			}
 			body {
 				margin: 0;
-				font-family:
-					Inter,
-					system-ui,
-					-apple-system,
-					BlinkMacSystemFont,
-					'Segoe UI',
-					sans-serif;
-				background: linear-gradient(
-					135deg,
-					var(--bg),
-					#111827 60%,
-					#1f2937
-				);
+				background: var(--bg);
 				color: var(--text);
+				font-family: var(--body);
 				line-height: 1.6;
+				font-size: 16px;
+				-webkit-font-smoothing: antialiased;
+				background-image:
+					radial-gradient(
+						900px 500px at 78% -8%,
+						rgba(34, 211, 238, 0.08),
+						transparent 60%
+					),
+					radial-gradient(
+						760px 460px at 5% 4%,
+						rgba(251, 191, 36, 0.06),
+						transparent 62%
+					);
+				background-attachment: fixed;
 			}
-			main {
-				max-width: 900px;
-				margin: 0 auto;
-				padding: 48px 24px 96px;
-			}
-			.card {
-				background: rgba(17, 24, 39, 0.86);
-				border: 1px solid rgba(255, 255, 255, 0.1);
-				border-radius: 24px;
-				padding: 32px;
-				box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-			}
-			h1 {
-				margin: 0 0 12px;
-				font-size: clamp(2rem, 4vw, 3rem);
-			}
-			p {
-				color: var(--muted);
-			}
-			.pill {
-				display: inline-block;
-				margin-bottom: 16px;
-				padding: 6px 10px;
-				border-radius: 999px;
-				background: rgba(34, 211, 238, 0.16);
-				color: var(--accent);
-				font-size: 0.9rem;
+			::selection {
+				background: var(--cyan);
+				color: #04121a;
 			}
 			a {
-				color: var(--accent);
+				color: var(--cyan);
 				text-decoration: none;
 			}
-			.grid {
+			.wrap {
+				max-width: 960px;
+				margin: 0 auto;
+				padding: 0 22px;
+			}
+
+			/* nav */
+			nav {
+				position: sticky;
+				top: 0;
+				z-index: 50;
+				backdrop-filter: blur(14px);
+				background: rgba(10, 13, 19, 0.72);
+				border-bottom: 1px solid var(--line);
+			}
+			.navin {
+				max-width: 960px;
+				margin: 0 auto;
+				padding: 11px 22px;
+				display: flex;
+				align-items: center;
+				gap: 18px;
+				flex-wrap: wrap;
+			}
+			.brand {
+				font-family: var(--disp);
+				font-weight: 800;
+				font-size: 15px;
+				letter-spacing: -0.02em;
+			}
+			.brand b {
+				color: var(--cyan);
+			}
+			.navlinks {
+				display: flex;
+				gap: 4px;
+				flex-wrap: wrap;
+				margin-left: auto;
+			}
+			.navlinks a {
+				font-family: var(--mono);
+				font-size: 12px;
+				color: var(--muted);
+				padding: 5px 9px;
+				border-radius: 7px;
+				border: 1px solid transparent;
+			}
+			.navlinks a:hover {
+				color: var(--text);
+				border-color: var(--line2);
+				background: var(--bg2);
+			}
+
+			/* hero */
+			header {
+				padding: 78px 0 48px;
+			}
+			.eyebrow {
+				font-family: var(--mono);
+				font-size: 12.5px;
+				letter-spacing: 0.16em;
+				text-transform: uppercase;
+				color: var(--amber);
+				margin-bottom: 20px;
+				display: flex;
+				align-items: center;
+				gap: 10px;
+			}
+			.eyebrow::before {
+				content: '';
+				width: 26px;
+				height: 1px;
+				background: var(--amber);
+				display: inline-block;
+			}
+			h1 {
+				font-family: var(--disp);
+				font-weight: 800;
+				font-size: clamp(34px, 7vw, 66px);
+				line-height: 1.02;
+				letter-spacing: -0.035em;
+				margin: 0 0 22px;
+			}
+			h1 .g {
+				background: linear-gradient(100deg, var(--cyan), var(--amber));
+				-webkit-background-clip: text;
+				background-clip: text;
+				color: transparent;
+			}
+			.lede {
+				font-size: clamp(16px, 2.4vw, 20px);
+				color: var(--muted);
+				max-width: 640px;
+			}
+			.lede b {
+				color: var(--text);
+				font-weight: 600;
+			}
+			.req {
+				margin-top: 30px;
+				display: inline-flex;
+				align-items: center;
+				gap: 11px;
+				font-family: var(--mono);
+				font-size: 13px;
+				color: var(--text);
+				background: var(--bg2);
+				border: 1px solid var(--line2);
+				padding: 10px 15px;
+				border-radius: 11px;
+			}
+			.req .dot {
+				width: 8px;
+				height: 8px;
+				border-radius: 50%;
+				background: var(--green);
+				box-shadow: 0 0 12px var(--green);
+			}
+			.req b {
+				color: var(--cyan);
+			}
+
+			/* sections */
+			section {
+				padding: 44px 0;
+				border-top: 1px solid var(--line);
+			}
+			.hooktag {
+				font-family: var(--mono);
+				font-size: 13px;
+				color: var(--faint);
+			}
+			.hooktag .n {
+				color: var(--amber);
+				font-weight: 700;
+			}
+			h2 {
+				font-family: var(--disp);
+				font-weight: 600;
+				font-size: clamp(26px, 4.4vw, 40px);
+				letter-spacing: -0.03em;
+				margin: 8px 0 6px;
+			}
+			h2 code {
+				font-family: var(--mono);
+				color: var(--cyan);
+				font-size: 0.82em;
+				font-weight: 700;
+			}
+			.sub {
+				color: var(--muted);
+				font-size: 17px;
+				max-width: 660px;
+				margin: 0 0 26px;
+			}
+			h3 {
+				font-family: var(--disp);
+				font-weight: 600;
+				font-size: 16px;
+				letter-spacing: -0.01em;
+				color: var(--amber2);
+				margin: 30px 0 12px;
+				text-transform: uppercase;
+				font-size: 13px;
+				letter-spacing: 0.12em;
+			}
+			p {
+				margin: 0 0 14px;
+			}
+			p.body {
+				max-width: 660px;
+			}
+			.inline {
+				font-family: var(--mono);
+				font-size: 0.88em;
+				color: var(--cyan2);
+				background: rgba(34, 211, 238, 0.09);
+				padding: 1px 6px;
+				border-radius: 5px;
+				border: 1px solid rgba(34, 211, 238, 0.15);
+			}
+
+			/* demo stage */
+			.stage {
 				display: grid;
+				grid-template-columns: 1fr 0.82fr;
 				gap: 16px;
-				grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-				margin-top: 24px;
+				margin: 20px 0 8px;
 			}
-			.item {
-				background: rgba(255, 255, 255, 0.04);
-				border: 1px solid rgba(255, 255, 255, 0.08);
+			@media (max-width: 720px) {
+				.stage {
+					grid-template-columns: 1fr;
+				}
+			}
+			.panel {
+				background: var(--bg2);
+				border: 1px solid var(--line2);
 				border-radius: 16px;
-				padding: 16px;
+				overflow: hidden;
 			}
-			.item h2 {
-				margin: 0 0 8px;
-				font-size: 1.05rem;
+			.phead {
+				display: flex;
+				align-items: center;
+				gap: 8px;
+				padding: 11px 15px;
+				border-bottom: 1px solid var(--line);
+				font-family: var(--mono);
+				font-size: 11.5px;
+				letter-spacing: 0.1em;
+				text-transform: uppercase;
+				color: var(--muted);
+			}
+			.phead .live {
+				margin-left: auto;
+				display: inline-flex;
+				align-items: center;
+				gap: 6px;
+				color: var(--faint);
+			}
+			.phead .live i {
+				width: 6px;
+				height: 6px;
+				border-radius: 50%;
+				background: var(--cyan);
+				animation: pulse 1.6s infinite;
+			}
+			@keyframes pulse {
+				0%,
+				100% {
+					opacity: 0.35;
+				}
+				50% {
+					opacity: 1;
+				}
+			}
+			.pbody {
+				padding: 17px;
+			}
+
+			/* inspector */
+			.insp {
+				font-family: var(--mono);
+				font-size: 12.5px;
+			}
+			.insp .row {
+				display: flex;
+				justify-content: space-between;
+				gap: 10px;
+				padding: 7px 0;
+				border-bottom: 1px dashed var(--line);
+			}
+			.insp .row:last-child {
+				border-bottom: 0;
+			}
+			.insp .k {
+				color: var(--muted);
+			}
+			.insp .v {
+				color: var(--cyan2);
+				text-align: right;
+				word-break: break-word;
+			}
+			.insp .v.amber {
+				color: var(--amber2);
+			}
+			.insp .v.red {
+				color: var(--red);
+			}
+			.insp .v.green {
+				color: var(--green);
+			}
+			.insp .v.dim {
+				color: var(--faint);
+			}
+			.insp .lbl {
+				font-size: 10.5px;
+				letter-spacing: 0.1em;
+				text-transform: uppercase;
+				color: var(--faint);
+				margin: 14px 0 6px;
+			}
+			.insp .lbl:first-child {
+				margin-top: 0;
+			}
+			.arr {
+				color: var(--faint);
+				font-size: 12px;
+				margin: 6px 0;
+			}
+
+			/* controls */
+			input[type='text'],
+			input[type='email'],
+			input[type='password'] {
+				width: 100%;
+				background: var(--inset);
+				border: 1px solid var(--line2);
+				color: var(--text);
+				font-family: var(--body);
+				font-size: 15px;
+				padding: 11px 13px;
+				border-radius: 10px;
+				margin-bottom: 10px;
+			}
+			input:focus {
+				outline: 2px solid var(--cyan);
+				outline-offset: 1px;
+				border-color: transparent;
+			}
+			label.fld {
+				font-size: 12px;
+				color: var(--muted);
+				display: block;
+				margin: 0 0 5px;
+			}
+			button.btn {
+				font-family: var(--disp);
+				font-weight: 600;
+				font-size: 14px;
+				letter-spacing: -0.01em;
+				cursor: pointer;
+				background: var(--cyan);
+				color: #04121a;
+				border: 0;
+				padding: 11px 18px;
+				border-radius: 10px;
+				transition: 0.15s;
+				display: inline-flex;
+				align-items: center;
+				gap: 8px;
+			}
+			button.btn:hover {
+				filter: brightness(1.08);
+			}
+			button.btn:active {
+				transform: translateY(1px);
+			}
+			button.btn:disabled {
+				opacity: 0.5;
+				cursor: not-allowed;
+				filter: none;
+			}
+			button.btn.ghost {
+				background: transparent;
+				color: var(--text);
+				border: 1px solid var(--line2);
+			}
+			button.btn.ghost:hover {
+				border-color: var(--cyan);
+				color: var(--cyan);
+			}
+			button.btn:focus-visible {
+				outline: 2px solid var(--amber);
+				outline-offset: 2px;
+			}
+			.spin {
+				width: 13px;
+				height: 13px;
+				border: 2px solid rgba(4, 18, 26, 0.35);
+				border-top-color: #04121a;
+				border-radius: 50%;
+				animation: sp 0.6s linear infinite;
+				display: inline-block;
+			}
+			.ghost .spin {
+				border: 2px solid var(--line2);
+				border-top-color: var(--cyan);
+			}
+			@keyframes sp {
+				to {
+					transform: rotate(360deg);
+				}
+			}
+
+			.toggle {
+				display: inline-flex;
+				align-items: center;
+				gap: 9px;
+				cursor: pointer;
+				font-size: 13px;
+				color: var(--muted);
+				user-select: none;
+				margin-top: 2px;
+			}
+			.toggle input {
+				position: absolute;
+				opacity: 0;
+			}
+			.toggle .sw {
+				width: 38px;
+				height: 22px;
+				border-radius: 12px;
+				background: var(--bg3);
+				border: 1px solid var(--line2);
+				position: relative;
+				transition: 0.18s;
+			}
+			.toggle .sw::after {
+				content: '';
+				position: absolute;
+				width: 16px;
+				height: 16px;
+				border-radius: 50%;
+				background: var(--muted);
+				top: 2px;
+				left: 2px;
+				transition: 0.18s;
+			}
+			.toggle input:checked + .sw {
+				background: rgba(248, 113, 113, 0.25);
+				border-color: var(--red);
+			}
+			.toggle input:checked + .sw::after {
+				left: 18px;
+				background: var(--red);
+			}
+			.toggle input:focus-visible + .sw {
+				outline: 2px solid var(--amber);
+				outline-offset: 2px;
+			}
+
+			/* comment list */
+			.clist {
+				list-style: none;
+				margin: 0 0 12px;
+				padding: 0;
+				display: flex;
+				flex-direction: column;
+				gap: 8px;
+			}
+			.clist li {
+				background: var(--bg3);
+				border: 1px solid var(--line);
+				border-radius: 10px;
+				padding: 9px 12px;
+				font-size: 14px;
+				display: flex;
+				align-items: center;
+				gap: 10px;
+				animation: pop 0.22s ease;
+			}
+			@keyframes pop {
+				from {
+					opacity: 0;
+					transform: translateY(-4px);
+				}
+				to {
+					opacity: 1;
+					transform: none;
+				}
+			}
+			.clist li.pending {
+				opacity: 0.55;
+				border-style: dashed;
+			}
+			.clist li .tag {
+				margin-left: auto;
+				font-family: var(--mono);
+				font-size: 10px;
+				letter-spacing: 0.08em;
+				text-transform: uppercase;
+				padding: 2px 7px;
+				border-radius: 20px;
+			}
+			.clist li.pending .tag {
+				color: var(--amber);
+				background: rgba(251, 191, 36, 0.12);
+			}
+			.clist li.confirmed .tag {
+				color: var(--green);
+				background: rgba(74, 222, 128, 0.12);
+			}
+			.row-inline {
+				display: flex;
+				gap: 8px;
+			}
+			.row-inline input {
+				margin-bottom: 0;
+			}
+
+			.notice {
+				border-radius: 10px;
+				padding: 10px 13px;
+				font-size: 13.5px;
+				margin: 2px 0 0;
+				border: 1px solid;
+			}
+			.notice.err {
+				background: rgba(248, 113, 113, 0.08);
+				border-color: rgba(248, 113, 113, 0.3);
+				color: #fca5a5;
+			}
+			.notice.ok {
+				background: rgba(74, 222, 128, 0.08);
+				border-color: rgba(74, 222, 128, 0.3);
+				color: #86efac;
+			}
+
+			.profile {
+				display: flex;
+				gap: 13px;
+				align-items: center;
+			}
+			.avatar {
+				width: 46px;
+				height: 46px;
+				border-radius: 12px;
+				background: linear-gradient(
+					135deg,
+					var(--cyan-dim),
+					var(--amber-dim)
+				);
+				display: grid;
+				place-items: center;
+				font-family: var(--disp);
+				font-weight: 800;
+				font-size: 19px;
+				color: #fff;
+			}
+			.profile .nm {
+				font-family: var(--disp);
+				font-weight: 600;
+				font-size: 16px;
+			}
+			.profile .rl {
+				font-size: 13px;
+				color: var(--muted);
+			}
+			.susp {
+				display: flex;
+				align-items: center;
+				gap: 11px;
+				color: var(--muted);
+				font-size: 14px;
+				padding: 6px 0;
+			}
+			.skel {
+				width: 46px;
+				height: 46px;
+				border-radius: 12px;
+				background: linear-gradient(
+					90deg,
+					var(--bg3),
+					var(--line2),
+					var(--bg3)
+				);
+				background-size: 200% 100%;
+				animation: sh 1.3s infinite;
+			}
+			@keyframes sh {
+				to {
+					background-position: -200% 0;
+				}
+			}
+
+			/* code */
+			.code {
+				background: var(--inset);
+				border: 1px solid var(--line);
+				border-radius: 14px;
+				margin: 18px 0;
+				overflow: hidden;
+			}
+			.code .ch {
+				display: flex;
+				align-items: center;
+				gap: 7px;
+				padding: 9px 14px;
+				border-bottom: 1px solid var(--line);
+				font-family: var(--mono);
+				font-size: 11.5px;
+				color: var(--faint);
+			}
+			.code .ch .d {
+				width: 9px;
+				height: 9px;
+				border-radius: 50%;
+				background: var(--line2);
+			}
+			.code .ch .fn {
+				margin-left: 6px;
+				color: var(--muted);
+			}
+			.code pre {
+				margin: 0;
+				padding: 16px 17px;
+				overflow-x: auto;
+				font-family: var(--mono);
+				font-size: 13px;
+				line-height: 1.62;
+			}
+			.code .imp {
+				color: var(--faint);
+			}
+			.tk-kw {
+				color: var(--violet);
+			}
+			.tk-str {
+				color: var(--amber2);
+			}
+			.tk-com {
+				color: var(--faint);
+				font-style: italic;
+			}
+			.tk-num {
+				color: var(--green);
+			}
+			.tk-hook {
+				color: var(--cyan);
+				font-weight: 500;
+			}
+			.tk-jsx {
+				color: #7dd3fc;
+			}
+			.tk-fn {
+				color: var(--amber);
+			}
+
+			/* callout */
+			.trap {
+				background: rgba(248, 113, 113, 0.05);
+				border: 1px solid rgba(248, 113, 113, 0.22);
+				border-left: 3px solid var(--red);
+				border-radius: 12px;
+				padding: 14px 16px;
+				margin: 16px 0;
+			}
+			.trap .t {
+				font-family: var(--disp);
+				font-weight: 600;
+				font-size: 12px;
+				letter-spacing: 0.1em;
+				text-transform: uppercase;
+				color: var(--red);
+				margin-bottom: 6px;
+			}
+			.trap p {
+				margin: 0;
+				font-size: 14.5px;
+				color: #e7c9c9;
+			}
+			.trap p + p {
+				margin-top: 8px;
+			}
+			.trap code {
+				font-family: var(--mono);
+				font-size: 0.86em;
+				color: var(--amber2);
+			}
+
+			.keyidea {
+				background: linear-gradient(180deg, var(--bg2), transparent);
+				border: 1px solid var(--line2);
+				border-radius: 13px;
+				padding: 15px 17px;
+				margin: 16px 0;
+				font-size: 15px;
+			}
+			.keyidea b {
+				color: var(--cyan);
+			}
+
+			/* cheatsheet */
+			.cheat {
+				width: 100%;
+				border-collapse: collapse;
+				font-size: 14px;
+				margin: 6px 0;
+			}
+			.cheat th,
+			.cheat td {
+				text-align: left;
+				padding: 11px 13px;
+				border-bottom: 1px solid var(--line);
+				vertical-align: top;
+			}
+			.cheat th {
+				font-family: var(--mono);
+				font-size: 11px;
+				letter-spacing: 0.1em;
+				text-transform: uppercase;
+				color: var(--faint);
+			}
+			.cheat td code {
+				font-family: var(--mono);
+				color: var(--cyan);
+				font-size: 0.9em;
+			}
+			.cheat td.src {
+				font-family: var(--mono);
+				font-size: 12px;
+				color: var(--amber2);
+			}
+			.cheatwrap {
+				overflow-x: auto;
+				border: 1px solid var(--line);
+				border-radius: 13px;
+				background: var(--bg2);
+			}
+
+			/* practice */
+			.tasks {
+				display: grid;
+				gap: 12px;
+				counter-reset: t;
+			}
+			.task {
+				background: var(--bg2);
+				border: 1px solid var(--line);
+				border-radius: 13px;
+				padding: 15px 17px 15px 52px;
+				position: relative;
+			}
+			.task::before {
+				counter-increment: t;
+				content: '0' counter(t);
+				position: absolute;
+				left: 16px;
+				top: 15px;
+				font-family: var(--mono);
+				font-weight: 700;
+				color: var(--amber);
+				font-size: 14px;
+			}
+			.task b {
+				font-family: var(--disp);
+				font-weight: 600;
+				color: var(--text);
+				font-size: 16px;
+			}
+			.task .goal {
+				margin: 7px 0 0;
+				font-size: 14.5px;
+				color: var(--text);
+			}
+			.task .steplbl {
+				display: block;
+				font-family: var(--mono);
+				font-size: 10.5px;
+				letter-spacing: 0.12em;
+				text-transform: uppercase;
+				color: var(--faint);
+				margin: 14px 0 7px;
+			}
+			.task ol {
+				margin: 0;
+				padding-left: 20px;
+				display: flex;
+				flex-direction: column;
+				gap: 6px;
+			}
+			.task ol li {
+				font-size: 14px;
+				color: var(--muted);
+			}
+			.task ol li::marker {
+				color: var(--cyan);
+				font-family: var(--mono);
+				font-size: 12px;
+			}
+			.task .hint,
+			.task .check {
+				margin: 13px 0 0;
+				font-size: 13.5px;
+				display: flex;
+				gap: 9px;
+				align-items: baseline;
+			}
+			.task .hint span.tg,
+			.task .check span.tg {
+				flex-shrink: 0;
+				font-family: var(--mono);
+				font-size: 10px;
+				letter-spacing: 0.08em;
+				text-transform: uppercase;
+				padding: 3px 8px;
+				border-radius: 20px;
+				font-weight: 700;
+			}
+			.task .hint {
+				color: var(--amber2);
+			}
+			.task .hint span.tg {
+				color: var(--amber);
+				background: rgba(251, 191, 36, 0.12);
+			}
+			.task .check {
+				color: #a7d8b4;
+			}
+			.task .check span.tg {
+				color: var(--green);
+				background: rgba(74, 222, 128, 0.12);
+			}
+			.task code {
+				font-family: var(--mono);
+				font-size: 0.87em;
+				color: var(--cyan2);
+				background: rgba(34, 211, 238, 0.08);
+				padding: 1px 5px;
+				border-radius: 4px;
+			}
+
+			footer {
+				padding: 44px 0 70px;
+				border-top: 1px solid var(--line);
+				color: var(--faint);
+				font-size: 13.5px;
+				text-align: center;
+				font-family: var(--mono);
+			}
+			footer b {
+				color: var(--muted);
+			}
+
+			.note-sim {
+				font-family: var(--mono);
+				font-size: 11px;
+				color: var(--faint);
+				margin-top: 9px;
+				line-height: 1.5;
 			}
 		</style>
 	</head>
 	<body>
-		<main>
-			<div class="card">
-				<span class="pill">React 19 • static GitHub Pages demo</span>
-				<h1>Новый урок по хукам React 19</h1>
-				<p>
-					Это минимальная статическая версия страницы, готовая к
-					публикации на GitHub Pages.
+		<nav>
+			<div class="navin">
+				<span class="brand">React 19 · <b>Хуки</b></span>
+				<div class="navlinks">
+					<a href="#use">use</a>
+					<a href="#optimistic">useOptimistic</a>
+					<a href="#actionstate">useActionState</a>
+					<a href="#formstatus">useFormStatus</a>
+					<a href="#cheat">Шпаргалка</a>
+					<a href="#practice">Практика</a>
+				</div>
+			</div>
+		</nav>
+
+		<header>
+			<div class="wrap">
+				<div class="eyebrow">Урок · React 19</div>
+				<h1>
+					Четыре хука, которые<br />убирают
+					<span class="g">рутину</span>
+				</h1>
+				<p class="lede">
+					Раньше, чтобы отправить одну форму, приходилось заводить
+					несколько отдельных переменных состояния: одну для данных,
+					вторую для флага загрузки, третью для ошибки. Плюс обёртка
+					вокруг запроса и часто отдельная очистка. React 19 убирает
+					эту рутину: каждый из четырёх хуков берёт на себя один такой
+					кусок. Ниже разберём их по очереди. Слева — работающий
+					пример, справа — что в этот момент происходит с состоянием.
 				</p>
-				<div class="grid">
-					<div class="item">
-						<h2>Что здесь</h2>
-						<p>
-							Подготовленный файл для онлайн-доступа без сборки.
+				<div class="req">
+					<span class="dot"></span> Минимум:
+					<b>react@19.0.0</b> stable
+				</div>
+			</div>
+		</header>
+
+		<main class="wrap">
+			<!-- ============ USE ============ -->
+			<section id="use">
+				<div class="hooktag">
+					хук <span class="n">01</span> — чтение ресурсов в рендере
+				</div>
+				<h2><code>use</code> — промис прямо в рендере</h2>
+				<p class="sub">
+					Читает промис или контекст прямо во время рендера. При этом
+					нарушает привычное правило хуков: его можно вызывать
+					условно, внутри цикла и даже внутри
+					<span class="inline">if</span>. Если передать промис,
+					компонент приостанавливается через Suspense, пока данные не
+					загрузятся.
+				</p>
+
+				<div class="stage">
+					<div class="panel">
+						<div class="phead">
+							Демо <span class="live"><i></i>вживую</span>
+						</div>
+						<div
+							class="pbody"
+							id="use-demo"
+						></div>
+					</div>
+					<div class="panel">
+						<div class="phead">Что внутри</div>
+						<div
+							class="pbody insp"
+							id="use-insp"
+						></div>
+					</div>
+				</div>
+				<p class="note-sim">
+					Пример показывает, как ведёт себя хук: сначала заглушка
+					Suspense, потом загруженные данные. Рядом — настоящий код
+					React 19.
+				</p>
+
+				<div class="code">
+					<div class="ch">
+						<span class="d"></span
+						><span class="fn">UserProfile.jsx</span>
+					</div>
+					<pre
+						data-code="import { use, Suspense } from 'react';
+
+// промис приходит СНАРУЖИ (из фреймворка/кеша), не создаётся в рендере
+function UserProfile({ userPromise }) {
+  const user = use(userPromise);   // подвиснет, пока не резолвится
+  return (
+    &lt;div&gt;
+      &lt;h1&gt;{user.name}&lt;/h1&gt;
+      &lt;p&gt;{user.role}&lt;/p&gt;
+    &lt;/div&gt;
+  );
+}
+
+function Page({ userPromise }) {
+  return (
+    &lt;Suspense fallback={&lt;p&gt;Загрузка…&lt;/p&gt;}&gt;
+      &lt;UserProfile userPromise={userPromise} /&gt;
+    &lt;/Suspense&gt;
+  );
+}"
+					></pre>
+				</div>
+
+				<h3>Условное чтение контекста</h3>
+				<p class="body">
+					Обычные хуки нельзя вызывать после раннего
+					<span class="inline">return</span>.
+					<span class="inline">use</span> — можно. Поэтому им удобно
+					читать контекст точечно:
+				</p>
+				<div class="code">
+					<div class="ch">
+						<span class="d"></span
+						><span class="fn">conditional-context.jsx</span>
+					</div>
+					<pre
+						data-code="function Message({ show, ThemeContext }) {
+  if (!show) return null;
+  const theme = use(ThemeContext);  // после return — легально
+  return &lt;p style={{ color: theme.accent }}&gt;Привет&lt;/p&gt;;
+}"
+					></pre>
+				</div>
+
+				<div class="trap">
+					<div class="t">Ловушка</div>
+					<p>
+						Промис нельзя создавать <b>внутри</b> клиентского
+						компонента (<code>use(fetch(...))</code> в теле) — на
+						каждый рендер будет новый промис и бесконечный цикл.
+						Промис должен приходить из фреймворка или библиотеки с
+						кешированием (в SPA — из внешнего кеша/лоадера). Для
+						контекста этого ограничения нет.
+					</p>
+				</div>
+			</section>
+
+			<!-- ============ USEOPTIMISTIC ============ -->
+			<section id="optimistic">
+				<div class="hooktag">
+					хук <span class="n">02</span> — мгновенный UI
+				</div>
+				<h2><code>useOptimistic</code> — показать до ответа сервера</h2>
+				<p class="sub">
+					Показываешь изменение в интерфейсе сразу, ещё до ответа
+					сервера. Если сервер отказал, React сам возвращает настоящее
+					состояние. Чаты, лайки, комментарии — везде, где ждать ответ
+					неприятно.
+				</p>
+
+				<div class="stage">
+					<div class="panel">
+						<div class="phead">
+							Демо <span class="live"><i></i>вживую</span>
+						</div>
+						<div
+							class="pbody"
+							id="opt-demo"
+						></div>
+					</div>
+					<div class="panel">
+						<div class="phead">Настоящее vs оптимистичное</div>
+						<div
+							class="pbody insp"
+							id="opt-insp"
+						></div>
+					</div>
+				</div>
+				<p class="note-sim">
+					Включи «Сервер падает» и добавь комментарий — увидишь, как
+					оптимистичный элемент появляется мгновенно, а потом
+					откатывается.
+				</p>
+
+				<div class="code">
+					<div class="ch">
+						<span class="d"></span
+						><span class="fn">Comments.jsx</span>
+					</div>
+					<pre
+						data-code="import { useOptimistic, startTransition } from 'react';
+
+function Comments({ comments, sendComment }) {
+  const [optimistic, addOptimistic] = useOptimistic(
+    comments,
+    (current, text) =&gt; [...current, { text, pending: true }]
+  );
+
+  async function handleAdd(text) {
+    startTransition(async () =&gt; {
+      addOptimistic(text);      // мгновенно в UI
+      await sendComment(text);  // упадёт → React откатит сам
+    });
+  }
+
+  return optimistic.map((c, i) =&gt;
+    &lt;li key={i} className={c.pending ? 'dim' : ''}&gt;{c.text}&lt;/li&gt;
+  );
+}"
+					></pre>
+				</div>
+
+				<div class="keyidea">
+					<b>Как это устроено.</b> Настоящее состояние — это
+					<span class="inline">comments</span>, которые пришли с
+					сервера.
+					<span class="inline">useOptimistic</span> показывает поверх
+					них временную версию. Когда сервер отвечает успехом,
+					настоящее состояние обновляется и временная версия
+					заменяется им. Если сервер отказал и настоящее состояние не
+					изменилось — временная версия просто исчезает.
+				</div>
+
+				<div class="trap">
+					<div class="t">Две ловушки</div>
+					<p>
+						<b>1.</b> <code>addOptimistic</code> обязательно внутри
+						transition (в <code>action</code>, в
+						<code>startTransition</code> или в
+						<code>&lt;form action&gt;</code>). Вызовешь в голом
+						<code>setTimeout</code> или обычном обработчике —
+						элемент застрянет навсегда.
+					</p>
+					<p>
+						<b>2.</b> Откат срабатывает только когда меняется
+						настоящее состояние. Если действие тихо провалилось и не
+						тронуло его, оптимистичное значение так и останется на
+						экране. Поэтому возвращай новое состояние даже при
+						ошибке.
+					</p>
+				</div>
+			</section>
+
+			<!-- ============ USEACTIONSTATE ============ -->
+			<section id="actionstate">
+				<div class="hooktag">
+					хук <span class="n">03</span> — состояние действия
+				</div>
+				<h2><code>useActionState</code> — форма без трёх useState</h2>
+				<p class="sub">
+					Управляет жизненным циклом действия: результат, ошибка,
+					pending — в одном хуке. Заменяет привычную связку
+					<span class="inline">isLoading</span> +
+					<span class="inline">error</span> +
+					<span class="inline">data</span>.
+				</p>
+
+				<div class="stage">
+					<div class="panel">
+						<div class="phead">
+							Демо <span class="live"><i></i>вживую</span>
+						</div>
+						<div
+							class="pbody"
+							id="as-demo"
+						></div>
+					</div>
+					<div class="panel">
+						<div class="phead">[state, isPending]</div>
+						<div
+							class="pbody insp"
+							id="as-insp"
+						></div>
+					</div>
+				</div>
+				<p class="note-sim">
+					Пароль <b>1234</b> — успех, любой другой — ошибка. Смотри,
+					как isPending переключается сам.
+				</p>
+
+				<div class="code">
+					<div class="ch">
+						<span class="d"></span
+						><span class="fn">LoginForm.jsx</span>
+					</div>
+					<pre
+						data-code="import { useActionState } from 'react';   // из 'react', не 'react-dom'!
+
+async function loginAction(prevState, formData) {
+  const pass = formData.get('password');
+  await new Promise(r =&gt; setTimeout(r, 1200));
+  if (pass !== '1234') return { error: 'Неверный пароль' };
+  return { ok: true, message: 'Вы вошли' };
+}
+
+function LoginForm() {
+  const [state, formAction, isPending] = useActionState(loginAction, null);
+
+  return (
+    &lt;form action={formAction}&gt;
+      &lt;input name=&quot;password&quot; type=&quot;password&quot; /&gt;
+      &lt;button disabled={isPending}&gt;
+        {isPending ? 'Вход…' : 'Войти'}
+      &lt;/button&gt;
+      {state?.error &amp;&amp; &lt;p className=&quot;err&quot;&gt;{state.error}&lt;/p&gt;}
+      {state?.ok &amp;&amp; &lt;p className=&quot;ok&quot;&gt;{state.message}&lt;/p&gt;}
+    &lt;/form&gt;
+  );
+}"
+					></pre>
+				</div>
+
+				<div class="trap">
+					<div class="t">Важно про миграцию</div>
+					<p>
+						<code>useActionState</code> пришёл на замену
+						экспериментальному <code>useFormState</code> из
+						canary-сборок <code>react-dom</code>. API почти тот же,
+						но добавлен третий возврат — <code>isPending</code>. И
+						импорт теперь из <code>'react'</code>, а не
+						<code>'react-dom'</code>.
+					</p>
+				</div>
+			</section>
+
+			<!-- ============ USEFORMSTATUS ============ -->
+			<section id="formstatus">
+				<div class="hooktag">
+					хук <span class="n">04</span> — статус формы без пропсов
+				</div>
+				<h2><code>useFormStatus</code> — кнопка знает сама</h2>
+				<p class="sub">
+					Даёт вложенному компоненту статус ближайшей родительской
+					<span class="inline">&lt;form&gt;</span> без прокидывания
+					пропсов и контекста. Классика — переиспользуемая кнопка
+					Submit, которая сама гаснет на время отправки.
+				</p>
+
+				<div class="stage">
+					<div class="panel">
+						<div class="phead">
+							Демо <span class="live"><i></i>вживую</span>
+						</div>
+						<div
+							class="pbody"
+							id="fs-demo"
+						></div>
+					</div>
+					<div class="panel">
+						<div class="phead">pending по расположению</div>
+						<div
+							class="pbody insp"
+							id="fs-insp"
+						></div>
+					</div>
+				</div>
+				<p class="note-sim">
+					Кнопка внутри формы видит pending. Кнопка «снаружи» — всегда
+					false. Это и есть главная ловушка, показанная вживую.
+				</p>
+
+				<div class="code">
+					<div class="ch">
+						<span class="d"></span
+						><span class="fn">SubmitButton.jsx</span>
+					</div>
+					<pre
+						data-code="import { useFormStatus } from 'react-dom';   // из 'react-dom'!
+
+// компонент внутри формы — пропсы не нужны
+function SubmitButton() {
+  const { pending } = useFormStatus();
+  return (
+    &lt;button disabled={pending}&gt;
+      {pending ? 'Отправка…' : 'Отправить'}
+    &lt;/button&gt;
+  );
+}
+
+function SignupForm({ action }) {
+  return (
+    &lt;form action={action}&gt;
+      &lt;input name=&quot;email&quot; type=&quot;email&quot; /&gt;
+      &lt;SubmitButton /&gt;   {/* знает статус без единого пропса */}
+    &lt;/form&gt;
+  );
+}"
+					></pre>
+				</div>
+
+				<div class="trap">
+					<div class="t">Ловушка расположения</div>
+					<p>
+						<code>useFormStatus</code> привязан к
+						<b>ближайшей родительской</b> <code>&lt;form&gt;</code>.
+						Поставишь компонент вне формы —
+						<code>pending</code> навсегда останется
+						<code>false</code>. Кнопка должна рендериться внутри
+						формы, а не рядом с ней.
+					</p>
+				</div>
+			</section>
+
+			<!-- ============ CHEAT ============ -->
+			<section id="cheat">
+				<div class="hooktag">итог</div>
+				<h2>Шпаргалка</h2>
+				<p class="sub">
+					Что откуда импортируется и зачем нужно. Импорт путает чаще
+					всего.
+				</p>
+				<div class="cheatwrap">
+					<table class="cheat">
+						<thead>
+							<tr>
+								<th>Хук</th>
+								<th>Импорт</th>
+								<th>Зачем</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td><code>use</code></td>
+								<td class="src">react</td>
+								<td>
+									Читать промис/контекст в рендере. Можно
+									условно.
+								</td>
+							</tr>
+							<tr>
+								<td><code>useOptimistic</code></td>
+								<td class="src">react</td>
+								<td>Мгновенный UI + автооткат при провале.</td>
+							</tr>
+							<tr>
+								<td><code>useActionState</code></td>
+								<td class="src">react</td>
+								<td>
+									state + isPending для действия/формы. Замена
+									useFormState.
+								</td>
+							</tr>
+							<tr>
+								<td><code>useFormStatus</code></td>
+								<td class="src">react-dom</td>
+								<td>Статус родительской формы без пропсов.</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div
+					class="keyidea"
+					style="margin-top: 22px"
+				>
+					<b>Границы применимости.</b> Эти хуки — про состояние
+					действия на уровне компонента. Они <b>не заменяют</b> React
+					Query / SWR / Redux: те про синхронизацию глобального
+					серверного кеша и инвалидацию по многим компонентам. Мутация
+					с общим кешем — всё ещё их территория.
+				</div>
+			</section>
+
+			<!-- ============ PRACTICE ============ -->
+			<section id="practice">
+				<div class="hooktag">закрепление</div>
+				<h2>Практика</h2>
+				<p class="sub">
+					Четыре задания — по одному на каждый хук. Всё на чистом
+					клиентском React. «Запрос на сервер» везде подделываем через
+					<span class="inline">setTimeout</span>, настоящий бэкенд не
+					нужен.
+				</p>
+				<div class="tasks">
+					<div class="task">
+						<b>Лайк с откатом</b>
+						<p class="goal">
+							Кнопка-сердечко со счётчиком лайков. По клику число
+							растёт сразу, но запрос иногда падает — и тогда лайк
+							откатывается назад.
+						</p>
+						<span class="steplbl">Шаги</span>
+						<ol>
+							<li>
+								Заведи настоящее состояние — число лайков через
+								<code>useState</code>, например 10.
+							</li>
+							<li>
+								Оберни его в <code>useOptimistic</code>. Функция
+								обновления берёт текущее число и прибавляет 1.
+							</li>
+							<li>
+								По клику вызови
+								<code>addOptimistic()</code> внутри
+								<code>startTransition</code>, а следом «отправь
+								запрос».
+							</li>
+							<li>
+								Запрос — фейковый: <code>setTimeout</code>,
+								который в 30% случаев завершается ошибкой. При
+								успехе увеличь настоящее состояние на 1. При
+								ошибке не делай ничего — React вернёт число сам.
+							</li>
+						</ol>
+						<p class="hint">
+							<span class="tg">Подсказка</span
+							><span
+								><code
+									>await new Promise((res, rej) =&gt;
+									setTimeout(() =&gt; Math.random() &lt; 0.3 ?
+									rej() : res(), 800))</code
+								></span
+							>
+						</p>
+						<p class="check">
+							<span class="tg">Готово</span
+							><span
+								>Когда запрос падает, счётчик подпрыгивает на +1
+								и тут же возвращается на место.</span
+							>
 						</p>
 					</div>
-					<div class="item">
-						<h2>Как открыть</h2>
-						<p>
-							После публикации откройте ссылку вида
-							<code>https://yourname.github.io/repo-name/</code>.
+
+					<div class="task">
+						<b>Форма подписки</b>
+						<p class="goal">
+							Поле email и кнопка. Пока идёт отправка — кнопка
+							заблокирована и пишет «Отправляем…». Потом либо
+							«Готово», либо ошибка, если email пустой или без
+							символа @.
+						</p>
+						<span class="steplbl">Шаги</span>
+						<ol>
+							<li>
+								Напиши async-функцию действия
+								<code>subscribeAction(prevState, formData)</code
+								>. Достань email через
+								<code>formData.get('email')</code>.
+							</li>
+							<li>
+								Проверь его: если пусто или нет <code>@</code> —
+								верни <code>{ error: 'Введите email' }</code>.
+								Иначе подожди секунду и верни
+								<code>{ ok: true }</code>.
+							</li>
+							<li>
+								В компоненте:
+								<code
+									>const [state, action, isPending] =
+									useActionState(subscribeAction, null)</code
+								>.
+							</li>
+							<li>
+								Повесь <code>action</code> на
+								<code>&lt;form action={action}&gt;</code>,
+								блокируй кнопку по <code>isPending</code>,
+								покажи <code>state.error</code> или
+								<code>state.ok</code>.
+							</li>
+						</ol>
+						<p class="hint">
+							<span class="tg">Подсказка</span
+							><span
+								>Импорт <code>useActionState</code> из
+								<code>'react'</code>, а не из
+								<code>'react-dom'</code>. Проверку делай прямо
+								внутри функции действия — отдельный
+								<code>useState</code> для ошибки больше не
+								нужен.</span
+							>
+						</p>
+						<p class="check">
+							<span class="tg">Готово</span
+							><span
+								>Пустой email даёт ошибку сразу. Правильный —
+								«Отправляем…», затем «Готово».</span
+							>
+						</p>
+					</div>
+
+					<div class="task">
+						<b>Переиспользуемая кнопка</b>
+						<p class="goal">
+							Вынести кнопку отправки в отдельный компонент,
+							который сам знает, идёт ли отправка формы — без
+							единого пропса. Вставить его в две разные формы.
+						</p>
+						<span class="steplbl">Шаги</span>
+						<ol>
+							<li>
+								Сделай компонент <code>SubmitButton</code>.
+								Внутри —
+								<code>const { pending } = useFormStatus()</code
+								>. Кнопка блокируется и меняет текст по
+								<code>pending</code>.
+							</li>
+							<li>
+								Собери две разные формы: у каждой свой
+								<code>action</code> и свои поля.
+							</li>
+							<li>
+								В каждую форму вставь
+								<code>&lt;SubmitButton /&gt;</code> — ничего ей
+								не передавая.
+							</li>
+							<li>
+								Отправь по очереди обе формы и посмотри на
+								кнопки.
+							</li>
+						</ol>
+						<p class="hint">
+							<span class="tg">Подсказка</span
+							><span
+								><code>useFormStatus</code> — из
+								<code>'react-dom'</code>. Кнопка обязана быть
+								<b>внутри</b> <code>&lt;form&gt;</code>: если
+								поставить рядом, <code>pending</code> всегда
+								останется <code>false</code>.</span
+							>
+						</p>
+						<p class="check">
+							<span class="tg">Готово</span
+							><span
+								>Обе кнопки гаснут во время своей отправки, хотя
+								ты не прокидывал им состояние.</span
+							>
+						</p>
+					</div>
+
+					<div class="task">
+						<b>Профиль через use</b>
+						<p class="goal">
+							Компонент читает данные пользователя через
+							<code>use(userPromise)</code> и показывает имя и
+							роль. Пока грузится — Suspense показывает заглушку.
+						</p>
+						<span class="steplbl">Шаги</span>
+						<ol>
+							<li>
+								Создай промис <b>один раз снаружи</b> компонента
+								— в модуле или в родителе:
+								<code>const userPromise = fetchUser()</code>.
+							</li>
+							<li>
+								В компоненте <code>Profile</code>:
+								<code>const user = use(userPromise)</code>,
+								выведи <code>user.name</code> и
+								<code>user.role</code>.
+							</li>
+							<li>
+								Оберни <code>&lt;Profile /&gt;</code> в
+								<code
+									>&lt;Suspense
+									fallback={&lt;p&gt;Загрузка…&lt;/p&gt;}&gt;</code
+								>.
+							</li>
+							<li>
+								<code>fetchUser</code> — снова фейк: промис с
+								<code>setTimeout</code>, который через секунду
+								отдаёт объект пользователя.
+							</li>
+						</ol>
+						<p class="hint">
+							<span class="tg">Подсказка</span
+							><span
+								>Если создать промис прямо в теле компонента, на
+								каждый рендер будет новый промис и бесконечная
+								загрузка. Промис живёт снаружи.</span
+							>
+						</p>
+						<p class="check">
+							<span class="tg">Готово</span
+							><span
+								>Сначала видно «Загрузка…», потом — профиль.
+								Спиннер не крутится вечно.</span
+							>
 						</p>
 					</div>
 				</div>
-			</div>
+			</section>
 		</main>
+
+		<footer class="wrap">
+			React 19 · интерактивный урок &nbsp;·&nbsp;
+			<b>use · useOptimistic · useActionState · useFormStatus</b>
+		</footer>
+
+		<script>
+			/* ---------- syntax highlighter (safe: protect strings/comments first) ---------- */
+			(function () {
+				var KW = [
+					'import',
+					'from',
+					'function',
+					'return',
+					'const',
+					'let',
+					'var',
+					'if',
+					'else',
+					'await',
+					'async',
+					'new',
+					'for',
+					'of',
+					'className',
+					'style',
+					'type',
+					'name',
+					'disabled',
+					'fallback',
+					'key',
+				];
+				var HOOKS = [
+					'use',
+					'useOptimistic',
+					'useActionState',
+					'useFormStatus',
+					'useState',
+					'useTransition',
+					'startTransition',
+					'Suspense',
+					'useContext',
+				];
+				function esc(s) {
+					return s
+						.replace(/&/g, '&amp;')
+						.replace(/</g, '&lt;')
+						.replace(/>/g, '&gt;');
+				}
+				function hl(raw) {
+					var store = [],
+						i = 0;
+					function stash(html) {
+						var t = '\u0000' + i + '\u0000';
+						store[i] = html;
+						i++;
+						return t;
+					}
+					// escape first: code must render as text, only our spans are real HTML
+					var s = esc(raw);
+					// comments  // ...
+					s = s.replace(/\/\/[^\n]*/g, function (m) {
+						return stash('<span class="tk-com">' + m + '</span>');
+					});
+					// strings  '...' "..."
+					s = s.replace(
+						/(&quot;[^&]*?&quot;|&#39;[^&]*?&#39;|'[^']*'|"[^"]*")/g,
+						function (m) {
+							return stash(
+								'<span class="tk-str">' + m + '</span>',
+							);
+						},
+					);
+					// numbers
+					s = s.replace(
+						/\b(\d+)\b/g,
+						'<span class="tk-num">$1</span>',
+					);
+					// hooks / capitalized components
+					HOOKS.forEach(function (h) {
+						s = s.replace(
+							new RegExp('\\b' + h + '\\b', 'g'),
+							'<span class="tk-hook">' + h + '</span>',
+						);
+					});
+					// keywords
+					KW.forEach(function (k) {
+						s = s.replace(
+							new RegExp('\\b' + k + '\\b', 'g'),
+							'<span class="tk-kw">' + k + '</span>',
+						);
+					});
+					// restore
+					s = s.replace(/\u0000(\d+)\u0000/g, function (_, n) {
+						return store[+n];
+					});
+					return s;
+				}
+				document
+					.querySelectorAll('pre[data-code]')
+					.forEach(function (pre) {
+						pre.innerHTML = hl(pre.getAttribute('data-code'));
+					});
+			})();
+
+			/* ---------- helpers ---------- */
+			function el(id) {
+				return document.getElementById(id);
+			}
+			function row(k, v, cls) {
+				return (
+					'<div class="row"><span class="k">' +
+					k +
+					'</span><span class="v ' +
+					(cls || '') +
+					'">' +
+					v +
+					'</span></div>'
+				);
+			}
+			function lbl(t) {
+				return '<div class="lbl">' + t + '</div>';
+			}
+
+			/* ===================== 01 · use ===================== */
+			var useS = {status: 'idle', data: null};
+			function useRender() {
+				var d = el('use-demo'),
+					ins = el('use-insp');
+				if (useS.status === 'idle') {
+					d.innerHTML =
+						'<p style="color:var(--muted);font-size:14px;margin-bottom:14px">Компонент ещё не читал промис.</p>' +
+						'<button class="btn" id="use-go">Загрузить профиль</button>';
+					el('use-go').onclick = useLoad;
+				} else if (useS.status === 'pending') {
+					d.innerHTML =
+						'<div class="susp"><div class="skel"></div><span>Suspense показывает fallback…</span></div>';
+				} else {
+					d.innerHTML =
+						'<div class="profile"><div class="avatar">А</div><div><div class="nm">' +
+						useS.data.name +
+						'</div>' +
+						'<div class="rl">' +
+						useS.data.role +
+						'</div></div></div>' +
+						'<button class="btn ghost" id="use-again" style="margin-top:14px">Ещё раз</button>';
+					el('use-again').onclick = function () {
+						useS = {status: 'idle', data: null};
+						useRender();
+					};
+				}
+				var st = useS.status;
+				var scls =
+					st === 'resolved' ? 'green'
+					: st === 'pending' ? 'amber'
+					: 'dim';
+				ins.innerHTML =
+					lbl('promise') +
+					row('status', st, scls) +
+					row(
+						'suspended',
+						st === 'pending' ? 'true' : 'false',
+						st === 'pending' ? 'amber' : 'dim',
+					) +
+					lbl('use(promise) →') +
+					row(
+						'value',
+						useS.data ? '{ name: "' + useS.data.name + '" }' : '—',
+						useS.data ? 'green' : 'dim',
+					);
+			}
+			function useLoad() {
+				useS.status = 'pending';
+				useS.data = null;
+				useRender();
+				setTimeout(function () {
+					useS.status = 'resolved';
+					useS.data = {name: 'Аня', role: 'Frontend разработчик'};
+					useRender();
+				}, 1300);
+			}
+
+			/* ===================== 02 · useOptimistic ===================== */
+			var optS = {
+				canonical: [{id: 1, text: 'Отличный урок!'}],
+				pending: [],
+				failMode: false,
+				nextId: 2,
+				error: null,
+			};
+			function optRender() {
+				var d = el('opt-demo'),
+					ins = el('opt-insp');
+				var display = optS.canonical
+					.map(function (c) {
+						return {text: c.text, pending: false};
+					})
+					.concat(
+						optS.pending.map(function (p) {
+							return {text: p.text, pending: true};
+						}),
+					);
+				var list = display
+					.map(function (c) {
+						return (
+							'<li class="' +
+							(c.pending ? 'pending' : 'confirmed') +
+							'">' +
+							c.text +
+							'<span class="tag">' +
+							(c.pending ? 'отправка' : 'ок') +
+							'</span></li>'
+						);
+					})
+					.join('');
+				d.innerHTML =
+					'<ul class="clist">' +
+					list +
+					'</ul>' +
+					'<div class="row-inline"><input type="text" id="opt-in" placeholder="Новый комментарий…" aria-label="Комментарий">' +
+					'<button class="btn" id="opt-add">Добавить</button></div>' +
+					(optS.error ?
+						'<div class="notice err" style="margin-top:10px">' +
+						optS.error +
+						'</div>'
+					:	'') +
+					'<label class="toggle" style="margin-top:12px"><input type="checkbox" id="opt-fail" ' +
+					(optS.failMode ? 'checked' : '') +
+					'><span class="sw"></span>Сервер падает</label>';
+				el('opt-add').onclick = optAdd;
+				el('opt-in').onkeydown = function (e) {
+					if (e.key === 'Enter') optAdd();
+				};
+				el('opt-fail').onchange = function (e) {
+					optS.failMode = e.target.checked;
+					optRender();
+				};
+				ins.innerHTML =
+					lbl('настоящее (с сервера)') +
+					row('length', optS.canonical.length, '') +
+					row(
+						'last',
+						optS.canonical.length ?
+							'"' +
+								optS.canonical[
+									optS.canonical.length - 1
+								].text.slice(0, 14) +
+								'"'
+						:	'—',
+						'green',
+					) +
+					lbl('оптимистичное (на экране)') +
+					row(
+						'length',
+						display.length,
+						display.length !== optS.canonical.length ? 'amber' : '',
+					) +
+					row(
+						'pending слой',
+						optS.pending.length,
+						optS.pending.length ? 'amber' : 'dim',
+					) +
+					lbl('режим') +
+					row(
+						'failMode',
+						optS.failMode ? 'ON' : 'off',
+						optS.failMode ? 'red' : 'dim',
+					);
+			}
+			function optAdd() {
+				var inp = el('opt-in');
+				var text = (inp.value || '').trim();
+				if (!text) return;
+				inp.value = '';
+				optS.error = null;
+				var id = optS.nextId++;
+				optS.pending.push({id: id, text: text});
+				optRender();
+				setTimeout(function () {
+					optS.pending = optS.pending.filter(function (p) {
+						return p.id !== id;
+					});
+					if (optS.failMode) {
+						optS.error =
+							'Сервер отклонил комментарий — оптимистичный элемент откатился.';
+					} else {
+						optS.canonical.push({id: id, text: text});
+					}
+					optRender();
+				}, 1500);
+			}
+
+			/* ===================== 03 · useActionState ===================== */
+			var asS = {state: null, isPending: false};
+			function asRender() {
+				var d = el('as-demo'),
+					ins = el('as-insp');
+				d.innerHTML =
+					'<label class="fld">Пароль</label>' +
+					'<input type="password" id="as-pass" placeholder="попробуй 1234" ' +
+					(asS.isPending ? 'disabled' : '') +
+					'>' +
+					'<button class="btn" id="as-go" ' +
+					(asS.isPending ? 'disabled' : '') +
+					'>' +
+					(asS.isPending ?
+						'<span class="spin"></span> Вход…'
+					:	'Войти') +
+					'</button>' +
+					(asS.state && asS.state.error ?
+						'<div class="notice err" style="margin-top:12px">' +
+						asS.state.error +
+						'</div>'
+					:	'') +
+					(asS.state && asS.state.ok ?
+						'<div class="notice ok" style="margin-top:12px">' +
+						asS.state.message +
+						'</div>'
+					:	'');
+				var go = el('as-go');
+				if (go) go.onclick = asSubmit;
+				var p = el('as-pass');
+				if (p)
+					p.onkeydown = function (e) {
+						if (e.key === 'Enter' && !asS.isPending) asSubmit();
+					};
+				var stateStr =
+					asS.state ?
+						asS.state.ok ?
+							'{ ok: true }'
+						:	'{ error: … }'
+					:	'null';
+				ins.innerHTML =
+					lbl('useActionState') +
+					row(
+						'isPending',
+						asS.isPending ? 'true' : 'false',
+						asS.isPending ? 'amber' : 'dim',
+					) +
+					row(
+						'state',
+						stateStr,
+						asS.state ?
+							asS.state.ok ?
+								'green'
+							:	'red'
+						:	'dim',
+					) +
+					lbl('жизненный цикл') +
+					row(
+						'фаза',
+						asS.isPending ? 'pending'
+						: asS.state ?
+							asS.state.ok ?
+								'success'
+							:	'error'
+						:	'idle',
+						asS.isPending ? 'amber'
+						: asS.state ?
+							asS.state.ok ?
+								'green'
+							:	'red'
+						:	'dim',
+					);
+			}
+			function asSubmit() {
+				var pass = (el('as-pass') && el('as-pass').value) || '';
+				asS.isPending = true;
+				asS.state = null;
+				asRender();
+				setTimeout(function () {
+					asS.isPending = false;
+					asS.state =
+						pass === '1234' ?
+							{ok: true, message: 'Добро пожаловать!'}
+						:	{error: 'Неверный пароль (подсказка: 1234).'};
+					asRender();
+				}, 1200);
+			}
+
+			/* ===================== 04 · useFormStatus ===================== */
+			var fsS = {pending: false, done: false};
+			function fsRender() {
+				var d = el('fs-demo'),
+					ins = el('fs-insp');
+				d.innerHTML =
+					'<div style="border:1px solid var(--line2);border-radius:11px;padding:13px;margin-bottom:11px">' +
+					'<div style="font-family:var(--mono);font-size:11px;color:var(--faint);margin-bottom:9px">&lt;form&gt; ← кнопка ВНУТРИ</div>' +
+					'<input type="email" id="fs-mail" placeholder="email" ' +
+					(fsS.pending ? 'disabled' : '') +
+					'>' +
+					'<button class="btn" id="fs-in" ' +
+					(fsS.pending ? 'disabled' : '') +
+					' style="width:100%">' +
+					(fsS.pending ?
+						'<span class="spin"></span> Отправка…'
+					:	'Отправить') +
+					'</button>' +
+					'</div>' +
+					'<div style="font-family:var(--mono);font-size:11px;color:var(--faint);margin-bottom:7px">кнопка СНАРУЖИ формы</div>' +
+					'<button class="btn ghost" disabled style="width:100%">Отправить (pending всегда false)</button>' +
+					(fsS.done ?
+						'<div class="notice ok" style="margin-top:11px">Форма отправлена.</div>'
+					:	'');
+				var b = el('fs-in');
+				if (b) b.onclick = fsSubmit;
+				ins.innerHTML =
+					lbl('useFormStatus()') +
+					row(
+						'внутри формы',
+						fsS.pending ? 'pending: true' : 'pending: false',
+						fsS.pending ? 'amber' : 'dim',
+					) +
+					row('снаружи формы', 'pending: false', 'red') +
+					lbl('почему') +
+					'<div class="arr">хук читает ближайшую<br>родительскую &lt;form&gt;. Нет формы<br>сверху — нет статуса.</div>';
+			}
+			function fsSubmit() {
+				fsS.pending = true;
+				fsS.done = false;
+				fsRender();
+				setTimeout(function () {
+					fsS.pending = false;
+					fsS.done = true;
+					fsRender();
+				}, 1500);
+			}
+
+			/* init */
+			useRender();
+			optRender();
+			asRender();
+			fsRender();
+
+			/* active nav highlight */
+			(function () {
+				var links = [].slice.call(
+					document.querySelectorAll('.navlinks a'),
+				);
+				var map = {};
+				links.forEach(function (a) {
+					map[a.getAttribute('href').slice(1)] = a;
+				});
+				var obs = new IntersectionObserver(
+					function (es) {
+						es.forEach(function (e) {
+							if (e.isIntersecting) {
+								links.forEach(function (l) {
+									l.style.color = '';
+									l.style.borderColor = '';
+									l.style.background = '';
+								});
+								var a = map[e.target.id];
+								if (a) {
+									a.style.color = 'var(--cyan)';
+									a.style.borderColor = 'var(--line2)';
+									a.style.background = 'var(--bg2)';
+								}
+							}
+						});
+					},
+					{rootMargin: '-45% 0px -50% 0px'},
+				);
+				document.querySelectorAll('section[id]').forEach(function (s) {
+					obs.observe(s);
+				});
+			})();
+		</script>
 	</body>
 </html>
