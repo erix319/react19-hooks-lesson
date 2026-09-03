@@ -6,7 +6,7 @@ This repository hosts a simple static landing page for the React 19 hooks lesson
 
 Open the published site here:
 
-https://pafuluofu-dev.github.io/react19-hooks-lesson-2/
+https://pafuluofu-dev.github.io/react19-hooks-lesson/
 
 ## Contents
 
